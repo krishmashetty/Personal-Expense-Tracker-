@@ -7,4 +7,5 @@ export const connectDB = async (req, res) => {
 
     console.log(`MongoDB Connected to ${connection.host}`);
 
-}
+} 
+//database
