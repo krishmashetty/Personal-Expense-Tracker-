@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #0f1629;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.5);
+  --accent-primary: #6366f1;
+  --accent-secondary: #8b5cf6;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-yellow: #f59e0b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+/* Bootstrap Overrides */
+.modal-content {
+  background: #131929 !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6) !important;
+}
+.modal-header {
+  border-bottom: 1px solid var(--border-color) !important;
+  padding: 1.5rem 1.75rem !important;
+}
+.modal-footer {
+  border-top: 1px solid var(--border-color) !important;
+  padding: 1.25rem 1.75rem !important;
+}
+.modal-title {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+}
+.btn-close { filter: invert(1) !important; opacity: 0.6 !important; }
+.btn-close:hover { opacity: 1 !important; }
+
+.form-control, .form-select {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.65rem 1rem !important;
+  font-size: 0.9rem !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+  background: rgba(255,255,255,0.07) !important;
+}
+.form-control::placeholder { color: var(--text-muted) !important; }
+.form-label { color: var(--text-secondary) !important; font-size: 0.85rem !important; font-weight: 500 !important; margin-bottom: 6px !important; }
+
+.form-select option { background: #1e2a3a; color: var(--text-primary); }
+
+.btn-primary {
+  background: var(--accent-gradient) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600 !important;
+  padding: 0.6rem 1.5rem !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.3px !important;
+  transition: opacity 0.2s, transform 0.1s !important;
+}
+.btn-primary:hover { opacity: 0.9 !important; transform: translateY(-1px) !important; }
+.btn-primary:active { transform: translateY(0) !important; }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.07) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500 !important;
+  padding: 0.6rem 1.5rem !important;
+  font-size: 0.9rem !important;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.11) !important; color: var(--text-primary) !important; }
+
+.table { color: var(--text-primary) !important; }
+
+/* React Datepicker overrides */
+.react-datepicker {
+  background-color: #131929 !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+.react-datepicker__header {
+  background-color: #0f1629 !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+.react-datepicker__current-month,
+.react-datepicker__day-name { color: var(--text-primary) !important; }
+.react-datepicker__day { color: var(--text-secondary) !important; }
+.react-datepicker__day:hover { background-color: var(--accent-primary) !important; color: white !important; border-radius: 50% !important; }
+.react-datepicker__day--selected { background-color: var(--accent-primary) !important; border-radius: 50% !important; }
+.react-datepicker__input-container input {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.6rem 1rem !important;
+  font-size: 0.875rem !important;
+  width: 100% !important;
+}
+
+/* Toast overrides */
+.Toastify__toast {
+  background: #1a2236 !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: 'Inter', sans-serif !important;
+}
