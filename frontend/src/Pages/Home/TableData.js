@@ -23,6 +23,12 @@ const TableData = (props) => {
     setTransactions(props.data);
   }, [props.data, props.user]);
 
+  const filteredTransactions = transactions
+    ? props.category && props.category !== "all"
+      ? transactions.filter((t) => t.category === props.category)
+      : transactions
+    : [];
+
   const handleEditClick = (itemKey) => {
     if (transactions.length > 0) {
       const editTran = props.data.filter((item) => item._id === itemKey);
@@ -79,6 +85,17 @@ const TableData = (props) => {
     );
   }
 
+  if (filteredTransactions.length === 0) {
+    return (
+      <div className="table-card">
+        <div className="empty-state">
+          <div className="empty-state-icon">🔍</div>
+          <div className="empty-state-text">No transactions found for this category</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="table-card">
@@ -95,7 +112,7 @@ const TableData = (props) => {
               </tr>
             </thead>
             <tbody>
-              {props.data.map((item, index) => (
+              {filteredTransactions.map((item, index) => (
                 <tr key={index}>
                   <td>{moment(item.date).format("MMM D, YYYY")}</td>
                   <td className="tx-title">{item.title}</td>

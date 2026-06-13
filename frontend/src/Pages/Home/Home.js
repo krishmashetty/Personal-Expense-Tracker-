@@ -41,6 +41,7 @@ const Home = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [view, setView] = useState("table");
+  const [category, setCategory] = useState("all");
 
   const [values, setValues] = useState({
     title: "", amount: "", description: "", category: "", date: "", transactionType: "",
@@ -113,6 +114,7 @@ const Home = () => {
     setStartDate(null);
     setEndDate(null);
     setFrequency("7");
+    setCategory("all");
   };
 
   return (
@@ -140,6 +142,23 @@ const Home = () => {
                 <option value="all">All</option>
                 <option value="expense">Expense</option>
                 <option value="credit">Income</option>
+              </select>
+            </div>
+
+            <div className="control-group">
+              <span className="control-label">Category</span>
+              <select className="control-select" value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="all">All</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Rent">Rent</option>
+                <option value="Salary">Salary</option>
+                <option value="Tip">Tip</option>
+                <option value="Food">Food</option>
+                <option value="Medical">Medical</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
@@ -194,9 +213,9 @@ const Home = () => {
 
           {/* Content */}
           {view === "table" ? (
-            <TableData data={transactions} user={cUser} />
+            <TableData data={transactions} user={cUser} category={category} />
           ) : (
-            <Analytics transactions={transactions} user={cUser} />
+            <Analytics transactions={transactions} user={cUser} category={category} />
           )}
         </div>
       )}
